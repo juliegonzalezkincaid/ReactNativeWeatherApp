@@ -1,12 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ForecastList from './components/ForecastList';
+import ForecastDetails from './components/ForecastDetails';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      {/* Similar to a Router */}
+      <Stack.Navigator initialRouteName="Weekly Forecast">
+        {/* Similar to a Route */}
+        <Stack.Screen name="Weekly Forecast" component={ForecastList} />
+        <Stack.Screen name="Details" component={ForecastDetails} />
+       
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
